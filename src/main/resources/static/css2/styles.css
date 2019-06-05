@@ -1,0 +1,696 @@
+body{
+	background :#f4f4f4;
+	font-family: time new roman; 
+}
+
+.navbar{
+	background-color: white;
+	outline: none;
+	border: none;
+	margin-bottom: 0;
+	border-radius: 0;
+	min-height: 80px !important;
+}
+
+#appInformation{
+	color: green;
+	margin-left: 10%;
+}
+
+.navbar-nav > li > a{
+	font-family: time new roman;
+	padding-top: 30px !important;
+	padding-bottom: 0 !important;
+	height: 80px;
+}
+
+.navbar-default .navbar-nav > li > a{
+	color: rgb(0,68,136);
+}
+
+.navbar-default .navbar-nav > li > a: hover{
+	color: rgb(0,68,136);
+}
+
+.navbar-nav img{
+	height: 80px;
+	width: 500px;
+}
+#header{
+	margin-top: cover;
+	background:rgb(0,68,136);
+	color: white;
+	height: 40px;
+}
+
+#dash{
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.panel-default{
+	height: 400px;
+}
+
+.panel-default1{
+	width: 990px;
+}
+
+.panel-default2{
+	height: 770px;
+}
+
+.panel-right{
+	width: 400px;
+}
+
+span{
+	color: rgb(0,68,136);
+}
+
+.panel-default span{
+	color:white;
+}
+
+.spanhead{
+	margin-left:40px;
+	text-align: center;
+	letter-spacing: 60px;
+}
+
+.headspan{
+	font-size: 50px;
+}
+
+.spanbody{
+	font-size: 50px;
+}
+
+.bodyspan {
+	margin: 40px;
+	font-family: time new roman;
+}
+
+.bodyspan1 {
+	margin-right:50px;
+	margin-left:160px;
+	height:70px;
+	font-family: time new roman;
+}
+
+.dash-box{
+	text-align: center;
+	background: rgb(0,68,136);
+	color: white;
+	width: 300px;
+	padding: 50px;
+}
+
+.panel-footer{
+	width: 300px;
+	background :#f4f4f4;
+}
+
+.marginRow {
+	margin-right: 140px;
+}
+
+.panel-default .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.panel-default1 .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.panel-default2 .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.panel-default3 .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.panel-defaul .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.panel-title{
+	font-size: 15px;
+}
+
+.panel-right .panel-heading{
+	background:white;
+	border-bottom: none;
+	color: rgb(0,68,136);
+	font-family: time new roman;
+}
+
+.container{
+	margin-left: cover;
+}
+
+footer{
+	margin-top: 25px;
+	width: cover;
+	height: 30px;
+	background: rgb(0,68,136);
+}
+
+
+
+
+
+
+/*form styles*/
+#msform {
+    text-align: center;
+    position: relative;
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    margin-left: 75px;
+    width: 80%;
+
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+.inputText{
+    position: absolute;
+    line-height: 50px;
+    font-size: 15px;
+    transition: .5s;
+    opacity: .5;
+}
+
+.focus .inputText{
+    transform: translateY(-20px);
+    font-size: 10px;
+    opacity: 1;
+    color: lightblue;
+} 
+
+.inputBox{
+    position: relative;
+    box-sizing: border-box;
+}
+
+#msform input ,#msform select {
+	background: transparent;
+	position: relative;
+    padding: 15px;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+    border-bottom: 2px solid rgba(0,0,0,.5);
+}
+
+#formsearch input {
+	background: transparent;
+	position: relative;
+	padding: 13px;
+	border: none;
+    outline: none;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 60%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+    border-bottom: 2px solid rgba(0,0,0,.5);
+}
+
+select{
+     -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    opacity: .5;
+}
+option{
+    font-size: 16px;
+    opacity: .5;
+}
+
+
+#msform input:focus ,#msform select:focus{
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#profile .btn {
+    width: 385px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 26px;
+}
+
+#msform .btn {
+    width: 100px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#manreport .btn {
+    width: 140px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 27px;
+}
+
+#manreport1 .btn {
+    width: 260px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 27px;
+}
+
+.btn-sub {
+    width: 100px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    margin-left: 30px;
+}
+
+#userSel{
+	width: 155px;
+    background: white;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    margin-left: 30px;
+}
+
+#profile .btn:hover, #profile .btn:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#msform .btn:hover, #msform .btn:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: rgb(0,68,136);
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 30%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: lightblue;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: green;
+    color: white;
+}
+#myform{
+    margin: 20px;
+    width: 890px;
+    font-family: time new roman;
+
+}
+#mytable th,td{
+    font-family: time new roman;
+}
+
+#formdiv{
+    border-radius: 20px;
+    width: 930px;
+    box-shadow: 0 15px 15px 1px rgba(0, 0, 0, 0.4); 
+    box-shadow-top: none; 
+}
+#fsform{
+    border-radius: 30px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    width: 730px;
+    margin-left: 30px;
+    padding: 40px;
+}
+
+#fsform fieldset
+{
+    font-family: time new roman;
+    color: black;
+    border: 2px solid #ecf0f1;
+    border-radius: 6px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+#fsform fieldset legend
+{
+    background:rgb(0,68,138);
+    text-align: center;
+    color: white;
+    border: 2px solid #ecf0f1;
+    border-radius: 6px;
+}
+.bodyspan1 {
+    margin-right: 50px;
+    margin-left: 160px;
+    height: 70px;
+    font-family: time new roman;
+}
+
+.file{
+    font-size: 50px;
+}
+
+.notifications .num{
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    line-height: 25px;
+    font-family: time new roman;
+    text-align: center;
+}
+
+.contract{
+    width: 80%;
+    position: relative;
+    background: #fff;
+    border: 1px solid #f4f4f4;
+    margin-left: 130px;
+    border: 0;
+    padding: 20px;
+}
+
+#headcontr img{
+    margin-left: 50px;
+    width: 80%;
+    height: 100px;
+}
+
+p{
+    font-size: 20px;
+}
+
+.contr{
+    margin-left: 50px;
+    margin-right: 70px;
+}
+
+#headcontr{
+   margin-right: 50px;
+   margin-left: 60px; 
+}
+
+.contract div,b,h3,h4{
+    font-size: 20px;
+}
+
+#manreport .inputBox{
+	position: relative;
+	margin-left: 30px;
+}
+
+#formsearch{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-left: 40%;
+}
+
+#formsearch .btn{
+	width: 100px;
+    background: lightblue;
+    font-weight: bold;
+    color: black;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+.btn-primary1{
+	margin-top: 20px;
+	margin-left: 50px;
+}
+table{
+                padding: 5px;
+                border: 1px solid black;
+            }
+            #tab1{
+                text-align: center;
+                border: 1px solid black;
+            }
+            #tah {
+				text-align: left;
+                background-color: rgb(137, 206, 137);
+                padding: 10px;
+            }
+            #tab {
+                padding: 5px;
+                border: 1px solid black;
+                width: 350px;
+            }
+            #tab2 {
+            	padding-top:5px;
+            	padding-left:50px;
+                border: 1px solid black;
+                width: 450px;
+            }
+            #table{
+				border:1px solid black;
+				border-collapse:collapse;
+				}
+				#word{
+				padding-left:15px;
+				background-color:rgb(229, 252, 229) ;
+				border-collapse:collapse;
+				}
+				#words{
+				border:1px solid black;
+				padding-left:15px;
+				background-color:rgb(229, 252, 229) ;
+				border-collapse:collapse;
+				}
+				#sign{
+				width:20px;
+				background-color:white;
+				border-collapse:collapse;
+				}
+            #taj1 {
+                padding: 5px;
+                border: 1px solid black;
+                width: 500px;
+            }
+            #taj2 {
+                padding: 5px;
+                border: 1px solid black;
+                width: 300px;
+            }
+            #tal1 {
+                padding: 5px;
+                border: 1px solid black;
+                width: 500px;
+            }
+            #tal2 {
+                padding: 5px;
+                border: 1px solid black;
+                width: 300px;
+            }
+            #table{
+            	width:800px;
+                margin-top: 20px;
+            }
+            #table3{
+                margin-top: 20px;
+            }
+            #table4{
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            #tad,#tak,#tas {
+                padding: 3px;
+                border: 1px solid black;
+                width: 400px;
+            }
+            #headkey{
+				margin-right: 50px;
+				margin-left: 30px; 
+			}
+			#statusCondition{
+			 	border-radius: 10px;
+			 	border: 0 none;
+			 	padding: 10px 5px;
+			 	font-family: time new roman;
+			 	margin-left: 30px;
+			 	width: 200px;
+			 	background: transparent;
+				position: relative;
+			}
+			#oneUser{
+				border-radius: 10px;
+			 	border: 0 none;
+			 	padding: 10px 5px;
+			 	font-family: time new roman;
+			 	margin-left: 35px;
+			 	width: 200px;
+			 	background: transparent;
+				position: relative;
+			}

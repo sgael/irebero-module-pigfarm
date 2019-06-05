@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"/>
+<link rel="stylesheet" href="css/jquery.dataTable.min.css"/>
+<link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
+
+
+<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+<link  href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'/>
+<link  href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/>
+
+<!--  -->
+<!-- Font awesome -->
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<!-- Sandstone Bootstrap CSS -->
+	
+<!-- 	garura -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	
+	
+	
+	
+<!-- 	hano -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+<!-- Optional theme -->
+<link rel="styleshe/et" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+
+
+
+<!-- birangira -->
+
+
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css"/>
+
+	<!-- Bootstrap Datatables -->
+	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+	<!-- Bootstrap social button library -->
+	<link rel="stylesheet" href="css/bootstrap-social.css"/>
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="css/bootstrap-select.css"/>
+	<!-- Bootstrap file input -->
+	<link rel="stylesheet" href="css/fileinput.min.css"/>
+	<!-- Awesome Bootstrap checkbox -->
+	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css"/>
+	<!-- Admin Stye -->
+	<link rel="stylesheet" href="css/style.css"/>
+	</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3" style="padding-top: 100px">
+				<h1 class="text-center text-bold text-light mt-4x " style="font-family: Times New Roman;" >Sign In</h1>
+				<div class="well row pt-2x pb-3x bk-light">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="bg-danger" th:if="${param.error}">Invalid
+							username and password!!!</div>
+						<div class="bg-danger" th:if="${param.logout}">You have been
+							logged out.</div>
+						<form class="form-signin"  method="post" style="padding-top: 50px">
+<!-- 							<h2 class="form-signin-heading">Please sign in</h2> -->
+							<label for="username" class="text-uppercase text-sm">Username</label>
+							<input type="text" roleId="username" placeholder="Username"
+								class="form-control mb" name="username" id="username"
+								required="required" autofocus="autofocus" /> <label
+								for="password" class="text-uppercase text-sm">Password</label> <input
+								type="password" roleId="inputPassword" placeholder="Password"
+								class="form-control mb" id="password" name="password"
+								required="required" />
+
+							<div class="checkbox checkbox-circle checkbox-info">
+								<input id="checkbox7" type="checkbox" /> <label for="checkbox7">
+									Keep me signed in </label>
+							</div>
+							
+					
+					
+							<button class="btn  btn-primary btn-block fa fa-sign-in fa" type="submit">&nbsp;Sign
+								in</button>
+					
+						</form>
+						<hr />
+
+						<div class="form-group">
+							<a type="submit" class="btn btn-info  btn-block login-button fa fa-user-plus fa"
+								th:href="@{/signup}">&nbsp;Sign up!</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="text-center text-light">
+					<a th:href="@{/CheckEmail}" class="text-light">Forgot password?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+<div th:fragment="body-bottom-scripts">
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/js/bootbox.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+<!-- 	<script src="js/Chart.min.js"></script> -->
+<!-- 	<script src="js/fileinput.js"></script> -->
+	<script src="js/chartData.js"></script>
+	<script src="js/main.js"></script>
+<!-- 	<script src="js/bootstrap-datetimepicker.min.js"></script> -->
+	
+	
+<!-- 	shaka unahindure -->
+<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> -->
+
+
+	</div>
+	
+	
+</body>
+</html>

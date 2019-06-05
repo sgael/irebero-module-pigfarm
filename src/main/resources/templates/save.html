@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top"> 
+<!-- <meta charset="ISO-8859-1"> -->
+<!-- <title>Pig Farming System</title> -->
+</head>
+<body>
+	<div class="container">
+		<div class="row main">
+			<div class="row" style="padding-left: 350px; padding-top: 50px;">
+				<h3 style="font-family: Times New Roman;">Pigsty Registration</h3>
+				<div th:if="${param.flagsaved}"
+					class="alert alert-success alert-dismissable" role="alert"
+					style="width: 400px">
+					<a href="#" class="close" data-dismiss="alert">&times;</a> <span>Data
+						Saved Successfully</span>
+				</div>
+				<div th:if="${param.error}"
+					class="alert alert-danger alert-dismissable" role="alert"
+					style="width: 400px">
+					<a href="#" class="close" data-dismiss="alert">&times;</a> <span>Error</span>
+				</div>
+				<form method="post" th:action="@{/save}">
+					<%-- <input type="hidden" name="id" th:value="${user.id}" /> --%>
+
+					<div class="form-group" style="font-family: Times New Roman;">
+						<label for="firstName">owner</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									th:value="${pi.owner}" id="owner" name="owner" roleId="owner"
+									placeholder="Enter your owner name" required="required" />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group" style="font-family: Times New Roman;">
+						<label for="lastName" class="cols-sm-2 control-label">Pen</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									th:value="${pi.pen}" id="pen" name="pen" roleId="pen"
+									placeholder="Enter the pen name" required="required" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group" style="font-family: Times New Roman;">
+						<label for="lastName" class="cols-sm-2 control-label">Size</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									th:value="${pi.meters}" id="meters" name="meters"
+									roleId="meters" placeholder="Enter the size"
+									required="required" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group" style="font-family: Times New Roman;">
+						<label for="lastName" class="cols-sm-2 control-label">Location</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									th:value="${pi.location}" id="location" name="location"
+									roleId="location" placeholder="Enter the location address"
+									required="required" />
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="form-group ">
+						<button type="submit"
+							class="btn btn-primary btn-block fa fa-edit fa">&nbsp;
+							SAVE</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<br />
+	<nav class="navbar navbar-default" style="background-color: #e5e8df;"
+		role="navigation">
+		<p
+			style="padding-left: 37%; position: absolute; bottom: 0; width: 100%">2018
+			&copy; Pig Farming System by B. S. Gael</p>
+	</nav>
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>

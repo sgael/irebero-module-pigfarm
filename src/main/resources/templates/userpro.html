@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>OAODS</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'/>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/>
+<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css"/>
+<link rel="stylesheet" href="/css/jquery.dataTable.min.css"/>
+<link rel="stylesheet" href="/css/dataTables.bootstrap.min.css"/>
+
+
+<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+<link  href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'/>
+<link  href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'/>
+
+<!--  -->
+<!-- Font awesome -->
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<!-- Sandstone Bootstrap CSS -->
+	
+<!-- 	garura -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	
+	
+	
+	
+<!-- 	hano -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+<!-- Optional theme -->
+<link rel="styleshe/et" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+
+
+
+
+<!-- birangira -->
+
+
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css"/>
+
+	<!-- Bootstrap Datatables -->
+	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+	<!-- Bootstrap social button library -->
+	<link rel="stylesheet" href="css/bootstrap-social.css"/>
+	<!-- Bootstrap select -->
+	<link rel="stylesheet" href="css/bootstrap-select.css"/>
+	<!-- Bootstrap file input -->
+	<link rel="stylesheet" href="css/fileinput.min.css"/>
+	<!-- Awesome Bootstrap checkbox -->
+	<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css"/>
+	<!-- Admin Stye -->
+	<link rel="stylesheet" href="css/style.css"/>
+<!--  -->
+</head>
+<body roleId="page-top" data-spy="scroll"
+	data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar" />
+<div class="container">
+	<div class="row main">
+		<div class="col-md-6">
+			<h2 class="title" style="padding-left: 40%;font-family:Times New Roman; ">Edit Profile</h2>
+			<hr style="font: bold;" />
+			<div th:if="${param.flagsaved}" class="alert alert-success alert-dismissable" role="alert" style="width: 400px">
+		<a href="#" class="close" data-dismiss="alert">&times;</a>
+            <span>Update Successfully</span>
+         </div>
+         <div th:if="${param.error}" class="alert alert-danger alert-dismissable" role="alert" style="width: 400px">
+         <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <span>Error while updating!!!!</span>
+         </div>
+			<form  method="post" th:action="@{/userpro}" >
+				<input type="hidden" name="id" th:value="${user.id}" />
+
+				<div class="form-group" style="font-family: Times New Roman;">
+					<label for="firstName">First Name</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								th:value="${user.fname}" id="fname" name="fname"
+								roleId="fname" placeholder="Enter your first name"
+								required="required" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" style="font-family: Times New Roman;">
+					<label for="lastName" class="cols-sm-2 control-label">Last
+						Name</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								th:value="${user.lname}" id="lname" name="lname"
+								roleId="lname" placeholder="Enter your last name"
+								required="required" />
+						</div>
+					</div>
+				</div>
+
+		
+
+				<div class="form-group" style="font-family: Times New Roman;">
+					<label for="email" class="cols-sm-2 control-label">Your
+						Email</label><span class="bg-danger pull-right" th:if="${emailExists}">Email
+						already exists</span>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+								type="text" class="form-control" th:value="${user.email}"
+								id="email" name="email" roleId="email"
+								placeholder="Enter your Email" required="required" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" style="font-family: Times New Roman;">
+					<label for="username" class="cols-sm-2 control-label">Username</label><span
+						class="bg-danger pull-right" th:if="${usernameExists}">Username
+						already exists</span>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								th:value="${user.username}" id="username" name="username"
+								roleId="username" placeholder="Enter your Username"
+								required="required" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group" style="font-family: Times New Roman;">
+					<label for="password" class="cols-sm-2 control-label">Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								id="password" name="password"
+								roleId="password" 
+								required="required" />
+						</div>
+					</div>
+				</div>
+				
+
+				<div class="form-group ">
+					<button type="submit" class="btn btn-primary btn-block fa fa-edit fa">&nbsp; Change
+						Settings</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+<br/>
+<nav class="navbar navbar-default" style="background-color:#e5e8df; " role="navigation">
+			<p style="padding-left: 37%;position: absolute;bottom: 0;width: 100%">2018 &copy; Online Authenticate Official Document System by B. S. Gael</p>
+			</nav>
+  <div th:fragment="body-bottom-scripts">
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/js/bootbox.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap-select.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+<!-- 	<script src="js/Chart.min.js"></script> -->
+<!-- 	<script src="js/fileinput.js"></script> -->
+	<script src="js/chartData.js"></script>
+	<script src="js/main.js"></script>
+<!-- 	<script src="js/bootstrap-datetimepicker.min.js"></script> -->
+	
+	
+<!-- 	shaka unahindure -->
+<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script> -->
+
+
+	</div>
+
+</body>
+</html>
