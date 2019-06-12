@@ -246,7 +246,7 @@ small{
 	font-size: 13px;
 	color: gray;
 }
-================
+
 .msform{
 	width: 400px;
 	margin: 50px auto;
@@ -274,7 +274,7 @@ small{
 	position: relative;
 	height: 30px;
 	background: transparent;
-	font-family: montserrat
+	font-family: montserrat;
 	border: none;
 	outline: none;
 	font-size: 14px;

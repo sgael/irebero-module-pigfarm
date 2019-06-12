@@ -79,7 +79,7 @@ public class Pigsty implements Serializable {
 	}
 
 	public Pigsty() {
-		super();
+		
 	}
 
 	@Override
