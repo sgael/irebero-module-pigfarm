@@ -46,8 +46,7 @@ public class PigstyController {
 		model.addAttribute("pi",pi);
 		model.addAttribute("owner",ownerService.findowner());
 		model.addAttribute("pen",penService.findpen());
-		model.addAttribute("prove",pigstyService.findProv());
-		model.addAttribute("distr",pigstyService.findDistr());
+		
 		model.addAttribute("sect",pigstyService.findSect());
 		return "BranchForm";
 	}
@@ -106,9 +105,9 @@ public class PigstyController {
 	
 	@RequestMapping(value="/findOne", method=RequestMethod.GET)
 	@ResponseBody
-	public Pigsty findOne(Long id) {
+	public Pigsty findOne( Long id) {
 		System.out.println("====================id"+id.toString());
-		return pigstyService.findOne(id);
+		return pigstyService.findById(id);
 		
 	}
 }

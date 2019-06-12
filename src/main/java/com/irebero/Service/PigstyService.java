@@ -13,12 +13,12 @@ public interface PigstyService {
 	
  Pigsty savepig(Pigsty pigsty);
  List<Pigsty> listall();
+ Pigsty findById(Long id);
  Pigsty findOne(Long id);
  Pigsty findByOwner(String owner);
  void delete(Pigsty pigsty);
  void savepigsty(Pigsty pigsty,String owner);
- List<Province>findProv();
- List<District>findDistr();
+ 
  List<Sector>findSect();
  Pigsty findByid(Long id);
 List<PigFarmingUsers>findowner();

@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Email;
-
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +53,7 @@ public class User implements UserDetails {
 	private String code;
 
 	private String company;
-	@Email
+	@org.hibernate.validator.constraints.Email
 	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 

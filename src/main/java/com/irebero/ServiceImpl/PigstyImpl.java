@@ -53,6 +53,11 @@ public class PigstyImpl implements PigstyService {
 		pigstyDao.delete(pigsty);
 	}
 	@Override
+	public Pigsty findById(Long id) {
+		// TODO Auto-generated method stub
+		return pigstyDao.findById(id).get();
+	}
+	@Override
 	public Pigsty findOne(Long id) {
 		// TODO Auto-generated method stub
 		return pigstyDao.findByid(id);
@@ -65,16 +70,7 @@ public class PigstyImpl implements PigstyService {
 		pigstyDao.save(pigsty);
 		
 	}
-	@Override
-	public List<Province> findProv() {
-		// TODO Auto-generated method stub
-		return pdao.findAll();
-	}
-	@Override
-	public List<District> findDistr() {
-		// TODO Auto-generated method stub
-		return disdao.findAll();
-	}
+	
 	@Override
 	public List<Sector> findSect() {
 		// TODO Auto-generated method stub

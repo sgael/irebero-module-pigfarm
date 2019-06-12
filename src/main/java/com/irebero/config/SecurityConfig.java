@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/newRole",
 			"/images/**", 
 			"/",
+			"/trackForm",
+			"/districtForm",
 			"/pug",
 			"/scss",
 			"/vendor",

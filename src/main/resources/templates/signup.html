@@ -220,11 +220,12 @@
 							Role</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user fa"
-									aria-hidden="true"></i></span> <select name="roleType"
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> <select name="roleType"
 									class="form-control" th:value="${roleType}" id="roleType">
-									<option th:each="role : ${allRoles}" th:value="${role.roleId}" th:text="${role.name}"></option>
-								</select>
+									<option th:each="role : ${allRoles}"
+				 								th:value="${role.roleId}" th:utext="${role.name}"></option>
+                                            	</select>
+								
 							</div>
 						</div>
 					</div>

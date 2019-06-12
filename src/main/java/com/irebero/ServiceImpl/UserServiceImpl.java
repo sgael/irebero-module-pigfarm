@@ -97,6 +97,7 @@ public User createUser(User user, Set<UserRole> userRoles) {
 	}
 	return localUser;
 }
+
 @Override
 public String userRole(Authentication auth) {
 	Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();

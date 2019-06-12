@@ -1,51 +1,39 @@
-
 package com.irebero.Domain;
-import java.io.Serializable;
+
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-
 @Entity
-public class Province implements Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Province {
 	@Id
-    private String pname;
-    @OneToMany(mappedBy = "province")
-    private List<District>district;
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
-    public List<District> getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(List<District> district) {
-        this.district = district;
-    }
-
-    public Province(String pname) {
-        this.pname = pname;
-    }
-
-    public Province() {
-    }
-
-    @Override
-    public String toString() {
-        return pname;
-    }
-    
-    
-    
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String name;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "province")
+	private List<District> districtList;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<District> getDistrictList() {
+		return districtList;
+	}
+	public void setDistrictList(List<District> districtList) {
+		this.districtList = districtList;
+	}
+	
 }
