@@ -23,78 +23,80 @@ import com.irebero.Domain.Pigsty;
 import com.irebero.Service.OwnerService;
 import com.irebero.Service.PenService;
 import com.irebero.Service.PigstyService;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.thymeleaf.engine.AttributeName;
 
 @Controller
 public class PigstyController {
 
-	@Autowired
-	private PigstyService pigstyService;
-	
-	@Autowired
-	private OwnerService ownerService;
-	@Autowired
-	private PenService penService;
-	
-	 
-	private static final Logger logger = LoggerFactory.getLogger(PigstyController.class);
+    @Autowired
+    private PigstyService pigstyService;
 
-	
-	@RequestMapping(value="/BranchForm",method=RequestMethod.GET)
-	public String newreg(ModelMap model) {
-		Pigsty pi=new Pigsty();
-		model.addAttribute("pi",pi);
-		model.addAttribute("owner",ownerService.findowner());
-		model.addAttribute("pen",penService.findpen());
-		model.addAttribute("prove",pigstyService.findProv());
-		model.addAttribute("distr",pigstyService.findDistr());
-		model.addAttribute("sect",pigstyService.findSect());
-		return "BranchForm";
-	}
-	@RequestMapping(value="/BranchForm",method=RequestMethod.POST)
-	public String save(@ModelAttribute("pi") @Valid Pigsty pi,@ModelAttribute("own") String user,@ModelAttribute("pe") String pentable,@ModelAttribute("sect") String sect,@ModelAttribute("prov") String prov,@ModelAttribute("distr") String distr ,BindingResult result,ModelMap model,RedirectAttributes redirectAttributes) {
-		
-		if(result.hasErrors())
-		{
-			logger.error("something went wrong");
-			redirectAttributes.addFlashAttribute("error","something went0 wrong");
-			return "/BranchForm";
-			
-		}
-			pigstyService.savepig(pi);
-			logger.info("well saved");
-			redirectAttributes.addFlashAttribute("info","well done");
-			return"redirect:/tables";
-	}
-	@RequestMapping("/tables")
-	public String viewpigsty(Model model) { 
-		List<Pigsty> list = pigstyService.listall();
+    @Autowired
+    private OwnerService ownerService;
+    @Autowired
+    private PenService penService;
+
+    private static final Logger logger = LoggerFactory.getLogger(PigstyController.class);
+
+    @RequestMapping(value = "/BranchForm", method = RequestMethod.GET)
+    public String newreg(ModelMap model) {
+        Pigsty pi = new Pigsty();
+        model.addAttribute("pi", pi);
+        model.addAttribute("owner", ownerService.findowner());
+        model.addAttribute("pen", penService.findpen());
+        model.addAttribute("prove", pigstyService.findProv());
+        model.addAttribute("distr", pigstyService.findDistr());
+        model.addAttribute("sect", pigstyService.findSect());
+        return "BranchForm";
+    }
+
+    @RequestMapping(value = "/BranchForm", method = RequestMethod.POST)
+    public String save(@ModelAttribute("pi") @Valid Pigsty pi, @ModelAttribute("own") String user, @ModelAttribute("pe") String pentable, @ModelAttribute("sect") String sect, @ModelAttribute("prov") String prov, @ModelAttribute("distr") String distr, BindingResult result, ModelMap model, RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            logger.error("something went wrong");
+            redirectAttributes.addFlashAttribute("error", "something went0 wrong");
+            return "/BranchForm";
+
+        }
+        pigstyService.savepig(pi);
+        logger.info("well saved");
+        redirectAttributes.addFlashAttribute("info", "well done");
+        return "redirect:/tables";
+    }
+
+    @RequestMapping("/tables")
+    public String viewpigsty(Model model) {
+        List<Pigsty> list = pigstyService.listall();
 //		, @RequestParam("") Long id
-		model.addAttribute("list", list);
-		return "tables";
-	}
-	@RequestMapping(value = "/editOwner", method = RequestMethod.POST)
-	public String enable(@ModelAttribute("id") Long id, @ModelAttribute("location") String location, @ModelAttribute("pen") String pen,
-			@ModelAttribute("meters") String meters,@ModelAttribute("owner") String owner, Model model) {
-		Pigsty pig = pigstyService.findByid(id);
-		System.out.println("ngiyi"+pig.getOwner());
+        model.addAttribute("list", list);
+        return "tables";
+    }
+
+    @RequestMapping(value = "/editOwner", method = RequestMethod.POST)
+    public String enable(@ModelAttribute("id") Long id, @ModelAttribute("location") String location, @ModelAttribute("pen") String pen,
+            @ModelAttribute("meters") String meters, @ModelAttribute("owner") String owner, Model model) {
+        Pigsty pig = pigstyService.findByid(id);
+        logger.error("ngiyi" + pig.getOwner());
 //		pig.setLocation(location);
 //		System.out.println("locatiom"+pig.getLocation()+"==============================");
 //		pig.setOwner(owner);
 //		pig.setPen(pen);
-		pig.setMeters(Double.parseDouble(meters));
-		pigstyService.savepig(pig);
-		model.addAttribute("pig",pig);
-		return "redirect:/tables";
-	}
-	@RequestMapping(value = "/delete")
-	public String disable(@RequestParam("id") Long id) {
-		Pigsty pig = pigstyService.findOne(id);
-		System.out.println("ngiyi"+pig.getOwner());
-		pigstyService.delete(pig);
-		return "redirect:/tables";
-	}
-	
+        pig.setMeters(Double.parseDouble(meters));
+        pigstyService.savepig(pig);
+        model.addAttribute("pig", pig);
+        return "redirect:/tables";
+    }
+
+    @RequestMapping(value = "/delete")
+    public String disable(@RequestParam("id") Long id) {
+        Pigsty pig = pigstyService.findOne(id);
+        System.out.println("ngiyi" + pig.getOwner());
+        pigstyService.delete(pig);
+        return "redirect:/tables";
+    }
+
 //	@RequestMapping(value = "/findOne")
 //	@ResponseBody
 //	public String findOne(@RequestParam("id") Long id) {
@@ -103,12 +105,21 @@ public class PigstyController {
 //		pigstyService.findOne(id);
 //		return "redirect:/tables";
 //	}
-	
-	@RequestMapping(value="/findOne", method=RequestMethod.GET)
-	@ResponseBody
-	public Pigsty findOne(Long id) {
-		System.out.println("====================id"+id.toString());
-		return pigstyService.findOne(id);
-		
-	}
+    @RequestMapping(value = "/findOne", method = RequestMethod.GET)
+    @ResponseBody
+    public Pigsty findOne(Long id) {
+        System.out.println("====================id" + id.toString());
+        return pigstyService.findOne(id);
+
+    }
+
+    @RequestMapping("/pigsty/{id}")
+    public String pigsty(@PathVariable("id") Long id, ModelMap model) {
+        Pigsty pigsty = pigstyService.findOne(id);        
+        model.addAttribute("owner", pigsty.getOwner());
+        model.addAttribute("pen", pigsty.getPen());
+        model.addAttribute("meters", pigsty.getMeters());
+        model.addAttribute("location", pigsty.getLocation());
+        return "tables :: modalContents";
+    }
 }
