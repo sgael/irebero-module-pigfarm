@@ -9,11 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.irebero.Domain.PigFarmingUsers;
@@ -54,14 +57,17 @@ public class OwnerController {
 		
 	}
 	
-	@RequestMapping(value = "/editowner", method = RequestMethod.POST)
-	public String update(@ModelAttribute("id") Long id, @ModelAttribute("location") String location, @ModelAttribute("Address") String Address,
+	@RequestMapping(value = "/editown", method = RequestMethod.POST)
+	public String update(@ModelAttribute("id") String id, @ModelAttribute("location") String location, @ModelAttribute("address") String address,
 			@ModelAttribute("gender") String gender,@ModelAttribute("contact") String contact, Model model) {
-		PigFarmingUsers own = ownerService.findById(id);
+		PigFarmingUsers own = ownerService.findById(Long.parseLong(id));
+		own.setAddress(address);
+		own.setGender(gender);
+		own.setPhone(contact);
 		ownerService.saveowner(own);
-		model.addAttribute("own",own);
 		return "redirect:/ViewOwner";
 	}
+	
 	
 	@RequestMapping("/ViewOwner")
 	public String viewowner(Model model) {
@@ -76,12 +82,25 @@ public class OwnerController {
 		return "redirect:/ViewOwner";
 	}
 	
-	@RequestMapping(value = "/findOwn")
-	public String find(@RequestParam("id") Long id) {
-		PigFarmingUsers ow=ownerService.findOne(id);
-		ownerService.findOne(id);
-		System.out.println("ngaha"+ow.getFirstname());
-		return "redirect:/tables";
+//	@RequestMapping(value = "/findOwn")
+//	public String find(@RequestParam("id") Long id) {
+//		PigFarmingUsers ow=ownerService.findOne(id);
+//		System.out.println("ngaha"+ow.getFirstname());
+//		return "redirect:/tables";
+//	}
+//	@RequestMapping(value = "/findOne", method = RequestMethod.GET)
+//    @ResponseBody
+//	public PigFarmingUsers finduno(Long id) {
+//		logger.error("our Id********************" +id);
+//		return ownerService.findOne(id);
+//	}
+	@RequestMapping("/own/{id}")
+	public String owner(@PathVariable("id") Long id, ModelMap model) {
+		PigFarmingUsers own=ownerService.findOne(id);
+		model.addAttribute("address", own.getAddress());
+        model.addAttribute("gender", own.getGender());
+        model.addAttribute("contact", own.getPhone());
+		 return "ViewOwner :: modalContents";
 	}
 }
 

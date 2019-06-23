@@ -238,7 +238,7 @@
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User
+                            <li><a th:href="@{/userprofile}"><i class="fa fa-user fa-fw"></i> User
                                     Profile</a></li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
@@ -381,16 +381,17 @@
                                         Information</h4>
                                 </div>
                                 <div class="modal-body">
-
+									<input class="form-control" id="id" name="id" type="hidden"
+                                               th:value="${id}">
                                     <div class="form-group">
                                         <label for="owner" class="form-horizontal-label">Owner:</label>
                                         <input class="form-control" id="owner" name="owner"
-                                               th:value="${owner}" placeholder="Enter Owner Name">
+                                               th:value="${owner}" placeholder="Enter Owner Name" disabled="disabled">
                                     </div>
                                     <div class="form-group">
                                         <label for="pen" class="form-horizontal-label">Pen:</label> <input
                                             class="form-control" id="pen" name="pen" th:value="${pen}"
-                                            placeholder="Enter Pen">
+                                            placeholder="Enter Pen" disabled="disabled">
                                     </div>
                                     <div class="form-group">
                                         <label for="location" class="form-horizontal-label">Location:</label>

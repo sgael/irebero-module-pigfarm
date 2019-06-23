@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/index1",
 			"/CheckEmail",
 			"/ConfirmPassword",
+			"/dashboard",
 			"/index2"
 	};
 

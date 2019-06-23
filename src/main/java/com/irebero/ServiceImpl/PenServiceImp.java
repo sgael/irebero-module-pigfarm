@@ -52,6 +52,11 @@ public class PenServiceImp implements PenService{
 		// TODO Auto-generated method stub
 		return pdao.findByid(id);
 	}
+
+	@Override
+	public PenTable findByCategory(String ca) {
+		return pdao.findByCategory(ca);
+	}
 	
 
 }

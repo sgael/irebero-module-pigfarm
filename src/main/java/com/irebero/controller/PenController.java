@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,11 +76,11 @@ public class PenController {
 	}
 	
 	@RequestMapping(value = "/editpen", method = RequestMethod.POST)
-	public String update(@ModelAttribute("id") Long id, @ModelAttribute("size") String size, @ModelAttribute("category") String category,Model model) {
-		PenTable pen=penService.findById(id);
+	public String update(@ModelAttribute("id") String id, @ModelAttribute("size") String size, @ModelAttribute("category") String category,Model model) {
+		PenTable pen=penService.findById(Long.parseLong(id));
 		
-		model.addAttribute("category",category);
-		model.addAttribute("size",size);
+		pen.setCategory(category);
+		pen.setSize(Double.parseDouble(size));
 		penService.savepen(pen);
 		return "redirect:/ViewPen";
 	}
@@ -96,4 +98,11 @@ public class PenController {
 		penService.delete(pen);
 		return "redirect:/ViewPen";
 	}
+	 @RequestMapping("/pen/{id}")
+	 public String penpopup(@PathVariable("id") Long id, ModelMap model) {
+		 PenTable pen=penService.findOne(id);
+		 model.addAttribute("category",pen.getCategory());
+		 model.addAttribute("size",pen.getSize());
+		 return "ViewPen :: modalContents";
+	 }
 }

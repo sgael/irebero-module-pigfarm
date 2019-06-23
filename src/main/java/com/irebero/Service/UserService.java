@@ -18,8 +18,7 @@ public interface UserService {
 	void save (User user) ;
 	User createUser(User user, Set <UserRole> userRoles);
 	User saveuser (User user);
-//	User findOne(Long id); 
-//	UserHasDocument findusedoc(Long id);
-//	void SendNotification(User user);
+	User findOne(Long id); 
+	void SendNotification(User user);
 	User findBycode(String id);
 }

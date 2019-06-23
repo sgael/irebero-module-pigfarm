@@ -11,4 +11,5 @@ public interface OwnerService {
 	PigFarmingUsers findOne(Long id);
 	void delete (PigFarmingUsers owner);
 	PigFarmingUsers findById(Long id);
+	PigFarmingUsers findByNames(String names);
 }

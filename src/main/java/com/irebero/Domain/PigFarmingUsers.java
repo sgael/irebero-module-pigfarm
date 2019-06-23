@@ -19,11 +19,9 @@ public class PigFarmingUsers implements Serializable{
 
 	private Long id;
 	
-	private String Firstname;
+	private String names;
 	
-	private String Lastname;
-	
-	private String Address;
+	private String address;
 	
 	private String gender;
 	
@@ -42,28 +40,24 @@ public class PigFarmingUsers implements Serializable{
 		this.id = id;
 	}
 
-	public String getFirstname() {
-		return Firstname;
+	
+
+	public String getNames() {
+		return names;
 	}
 
-	public void setFirstname(String firstname) {
-		Firstname = firstname;
+	public void setNames(String names) {
+		this.names = names;
 	}
 
-	public String getLastname() {
-		return Lastname;
-	}
-
-	public void setLastname(String lastname) {
-		Lastname = lastname;
-	}
+	
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getGender() {
@@ -96,7 +90,7 @@ public class PigFarmingUsers implements Serializable{
 
 	@Override
 	public String toString() {
-		return Firstname+" "+Lastname;
+		return names;
 	}
 
 	public PigFarmingUsers() {

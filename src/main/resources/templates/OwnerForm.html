@@ -209,7 +209,7 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="userpro.html"><i class="fa fa-user fa-fw"></i> User
+						<li><a th:href="@{/userprofile}"><i class="fa fa-user fa-fw"></i> User
 								Profile</a></li>
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 						</li>
@@ -242,7 +242,7 @@
 						
 								<ul class="nav nav-second-level">
                                 <li>
-                                    <a th:href="@{/BranchForm}">Branch Form</a>
+                                    <a th:href="@{/BranchForm}">Pigsty Form</a>
                                     <!-- 								#onclick="return false"//to disable a link -->
 								<a th:href="@{/OwnerForm}">Owner Form</a>
 								<a th:href="@{/PenForm}">Pen Form</a>
@@ -295,19 +295,15 @@
 <!-- 												placeholder="Enter Owner Id"> -->
 <!-- 										</div> -->
 										<div class="form-group">
-											<label>Firstname</label> <input class="form-control"
-												id="Firstname" name="Firstname"
-												th:value="${owner.Firstname}"
-												placeholder="Enter the Firstname">
+											<label>Names</label> <input class="form-control"
+												id="names" name="names"
+												th:value="${owner.names}"
+												placeholder="Enter names">
 										</div>
-										<div class="form-group">
-											<label>Lastname</label> <input class="form-control"
-												id="Lastname" name="Lastname" th:value="${owner.Lastname}"
-												placeholder="Enter the Lastname">
-										</div>
+										
 										<div class="form-group">
 											<label>Address</label> <input class="form-control"
-												id="Address" name="Address" th:value="${owner.Address}"
+												id="Address" name="Address" th:value="${owner.address}"
 												placeholder="Enter the Address">
 										</div>
 										<div class="form-group">

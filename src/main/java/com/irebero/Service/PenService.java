@@ -13,4 +13,5 @@ public interface PenService {
 	void delete(PenTable pe);
 	PenTable findOne(Long id);
 	PenTable findById(Long id);
+	PenTable findByCategory(String ca);
 }

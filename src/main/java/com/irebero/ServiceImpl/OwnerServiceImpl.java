@@ -45,6 +45,11 @@ public class OwnerServiceImpl implements OwnerService {
 		return oDao.findByid(id);
 	}
 
+	@Override
+	public PigFarmingUsers findByNames(String names) {
+		return oDao.findByNames(names);
+	}
+
 	
 
 

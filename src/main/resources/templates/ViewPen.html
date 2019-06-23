@@ -237,7 +237,7 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user fa-fw"></i> User
+						<li><a th:href="@{/userprofile}"><i class="fa fa-user fa-fw"></i> User
 								Profile</a></li>
 						<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
 						</li>
@@ -267,7 +267,7 @@
 						<li><a href="#"><i class="fa fa-edit fa-fw"
 								onclick="return false"></i> Form<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a th:href="@{/BranchForm}">Branch Form</a></li>
+								<li><a th:href="@{/BranchForm}">Pigsty Form</a></li>
 								<!-- 								#onclick="return false"//to disable a link -->
 								<li><a th:href="@{/OwnerForm}">Owner Form</a></li>
 								<li><a th:href="@{/PenForm}">Pen Form</a></li>
@@ -323,15 +323,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="gradeA" data-th-each="pig:${list}">
+								 <div id="exampleModalData">
+
+                                    </div>
+									<tr class="gradeA" data-th-each="pen:${list}">
 										
-										<td data-th-text="${pig.category}"></td>
-										<td data-th-text="${pig.size}"></td>
+										<td data-th-text="${pen.category}"></td>
+										<td data-th-text="${pen.size}"></td>
 										
-										<td class="center"><a class="btn btn-primary" id="btn1"
-											data-toggle="modal" data-target="#myModal">Update</a>&nbsp; <a
+										<td class="center">
+										<a class="btn btn-primary" th:onclick="'javascript:openModal(\'' + ${pen.id} + '\');'">Update</a>&nbsp; 
+											<a
 											class="btn btn-primary" id="btn2"
-											th:href="@{/delet(id=${pig.id})}">Delete</a></td>
+											th:href="@{/delet(id=${pen.id})}">Delete</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -347,17 +351,45 @@
 		<!-- /#page-wrapper -->
 
 	</div>
+	<div>
+          
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" style="top: 25%;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header"
+                             style="text-align: center; border: none; outline: none; color: rgb(0, 68, 138);">
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Delete Information</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="alert alert-danger">Are you sure you want to delete
+                                this row?</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">Close</button>
+                            <a href="" class="btn btn-danger" id="delRef">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 		</form> -->
+        </div>
 	<!-- /#wrapper -->
 
-	<div>
 		<!-- Modal -->
-		<form id="fmmodal" th:action="@{/editpen}"  method="post" >
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" style="top: 25%;">
+		<div class="myForm">
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" th:fragment="modalContents" aria-labelledby="myModalLabel" style="top: 25%;">
 				<div class="modal-dialog" role="document">
+				<form th:action="@{/editpen}"  method="post" >
 					<div class="modal-content">
 						<div class="modal-header"
-							style="text-align: center; border: none; outline: none; color: rgb(0, 68, 138);">
+							style="text-align: center; border: none; outline: none; color: rgb(0, 60, 145);">
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -365,6 +397,8 @@
 							<h4 class="modal-title" id="myModalLabel">Update Pen</h4>
 						</div>
 						<div class="modal-body">
+						<input class="form-control" id="id" name="id" type="hidden"
+                                               th:value="${id}">
 							<div class="form-group">
 							<label>Category</label> <input class="form-control" id="category"
 								name="category" th:value="${category}" placeholder="Enter category">
@@ -374,17 +408,16 @@
 								name="size" th:value="${size}" placeholder="Enter size">
 						</div>
 						</div>
-						<div class="modal-footer">
-						
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Update</button>
-						</div>
-						</div>
+						 <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
 					</div>
+					</form>
 				</div>
 			</div>
-		</form>
-	</div>
+			</div>
 
 	<!-- jQuery -->
 	<script src="vendor/jquery/jquery.min.js"></script>
@@ -412,6 +445,27 @@
 			
 			
 		});
+// 		script for deleting
+        $('.table #btn2').on('click', function (event) {
+            event.preventDefault();
+            var href = $(this).attr('href');
+            $('#myModal #delRef').attr('href', href);
+            $('#myModal').modal();
+        });
+// script to popup values into modal field
+        function openModal(id) {
+            $.ajax({
+                url: "/pen/" + id,
+                success: function (data) {
+//                 	#exampleModalData is the id of the empty div that help to retrive data and that div is placed above the list method
+// 					#exampleModal is the modal id of the modal at which data will be displayed into
+                    $("#exampleModalData").html(data);
+                    $("#exampleModal").modal("show");
+                }
+            });
+        }
+
+
 // 		search function using jquery
 // 		$("#inputFilter").on(
 // 				"keyup",

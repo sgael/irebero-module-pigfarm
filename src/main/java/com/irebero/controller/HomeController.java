@@ -10,6 +10,8 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.irebero.Dao.RoleDao;
 import com.irebero.Domain.User;
@@ -37,6 +40,8 @@ public class HomeController {
 	private BCryptPasswordEncoder passencrypt;
 	@Autowired
 	private RoleDao roleService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(PigstyController.class);
 
 	@RequestMapping("/")
 	public String home() {
@@ -144,6 +149,7 @@ public class HomeController {
 			} else {
 				Set<UserRole> userRoles = new HashSet<>();
 				System.out.println("ngiyi role" + roleType);
+				//we use it 
 				userRoles.add(new UserRole(user, roleDao.findByName(roleType)));
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //				user.setRole(roleType);
@@ -193,5 +199,46 @@ public class HomeController {
 		roleService.delete(role);
 		return "redirect:/newRole";
 	}
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	public String form(Model model) {
+		
+		return "dashboard";
+	}
+	
+	//method to update user of the system
+	@RequestMapping(value = "/userprofile", method = RequestMethod.GET)
+	public String profile(Principal principal, Model model, Authentication auth) {
+		//get the logged username
+		User user = userService.findByUsername(principal.getName());
+		//get the userrole
+		user = userService.findByUsername(auth.getName());
+		String role = userService.userRole(auth);
+		model.addAttribute("role", role);
+		model.addAttribute("user", user);
 
+		return "/userpro";
+	}
+
+	@RequestMapping(value = "/userprofile", method = RequestMethod.POST)
+	public String profilePost(@ModelAttribute("user") User newUser, Model model, RedirectAttributes redirectAttributes) {
+		System.out.println("=======================================================");
+		try {
+			User user = userService.findByUsername(newUser.getUsername());
+			user.setUsername(newUser.getUsername());
+			user.setFname(newUser.getFname());
+			user.setLname(newUser.getLname());
+			user.setEmail(newUser.getEmail());
+			user.setPassword(newUser.getPassword());
+			user.setCode(UUID.randomUUID().toString());
+			model.addAttribute("user", user);
+
+			userService.saveuser(user);
+			logger.info("well saved");
+			redirectAttributes.addFlashAttribute("info", "well done");
+			return "redirect:/index";
+		} catch (Exception e) {
+			return "redirect:/index?error";
+		}
+
+	}
 }

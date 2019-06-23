@@ -15,10 +15,10 @@ public interface PigstyService {
  List<Pigsty> listall();
  Pigsty findById(Long id);
  Pigsty findOne(Long id);
- Pigsty findByOwner(String owner);
+ Pigsty findone(Long id);
+ Pigsty findByOwner(PigFarmingUsers owner);
  void delete(Pigsty pigsty);
  void savepigsty(Pigsty pigsty,String owner);
- 
  List<Sector>findSect();
  Pigsty findByid(Long id);
 List<PigFarmingUsers>findowner();
