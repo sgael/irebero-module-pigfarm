@@ -1,6 +1,7 @@
 
 package com.irebero.controller;
 
+
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
@@ -25,9 +26,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.irebero.Dao.RoleDao;
+import com.irebero.Dao.UserDao;
+import com.irebero.Domain.PenTable;
+import com.irebero.Domain.PigFarmingUsers;
+import com.irebero.Domain.Pigsty;
 import com.irebero.Domain.User;
 import com.irebero.Security.Role;
 import com.irebero.Security.UserRole;
+import com.irebero.Service.OwnerService;
+import com.irebero.Service.PenService;
+import com.irebero.Service.PigstyService;
 import com.irebero.Service.UserService;
 
 @Controller
@@ -35,11 +43,19 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private OwnerService ownerservice;
+	@Autowired
+	private PigstyService pigstyservice;
+	@Autowired
 	private RoleDao roleDao;
 	@Autowired
 	private BCryptPasswordEncoder passencrypt;
 	@Autowired
 	private RoleDao roleService;
+	@Autowired
+	private PenService penservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PigstyController.class);
 
@@ -174,9 +190,15 @@ public class HomeController {
 		// System.out.println(role);
 		model.addAttribute("name", name);
 		model.addAttribute("role", role);
-
+		
 	}
 
+	@RequestMapping("/ViewUsers")
+	public String viewuser(Model model) {
+		List<User>users=userService.listusers();
+		model.addAttribute("users", users);
+		return "ViewUsers";
+	}
 	@RequestMapping(value = "/newRole", method = RequestMethod.GET)
 	public String getRole(Model model, Role role) {
 		model.addAttribute("role", role);
@@ -199,9 +221,23 @@ public class HomeController {
 		roleService.delete(role);
 		return "redirect:/newRole";
 	}
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public String form(Model model) {
-		
+	@RequestMapping("/dashboard")
+	public String dashboard(Principal principal, Model model, Authentication auth) {
+		User user = userService.findByUsername(auth.getName());
+		String role = userService.userRole(auth);
+		model.addAttribute("role", role);
+		model.addAttribute("user", user);
+		logger.info(user.getFname()+' '+user.getLname());
+		//list to populate the size of data content available in our database
+		List<PenTable> pens=penservice.findpen();
+		String pencount=pens.size()+"";
+		model.addAttribute("pencount",pencount);
+		List<PigFarmingUsers>owners=ownerservice.findowner();
+		String usercount=owners.size()+"";
+		model.addAttribute("usercount",usercount);
+		List<Pigsty>pigsts=pigstyservice.listall();
+		String pigstycount=pigsts.size()+"";
+		model.addAttribute("pigstycount",pigstycount);
 		return "dashboard";
 	}
 	
@@ -240,5 +276,23 @@ public class HomeController {
 			return "redirect:/index?error";
 		}
 
+	}
+	
+	@RequestMapping(value = "enable")
+	public String enable(@RequestParam("id") Long userID, Principal principal, Model model,
+			Authentication auth) {
+		User user = userDao.findByid(userID);
+		user.setEnabled(true);
+		userService.save(user);
+		return "redirect:/ViewUsers";
+	}
+	
+	@RequestMapping(value = "disable")
+	public String disable(@RequestParam("id") Long userID, Principal principal, Model model,
+			Authentication auth) {
+		User user = userDao.findByid(userID);
+		user.setEnabled(false);
+		userService.save(user);
+		return "redirect:/ViewUsers";
 	}
 }

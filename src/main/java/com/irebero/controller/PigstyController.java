@@ -17,17 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.irebero.Domain.PenTable;
-import com.irebero.Domain.PigFarmingUsers;
+
 import com.irebero.Domain.Pigsty;
-import com.irebero.Service.DistrictService;
 import com.irebero.Service.OwnerService;
 import com.irebero.Service.PenService;
 import com.irebero.Service.PigstyService;
-import com.irebero.Service.ProvinceService;
 
 import org.springframework.web.bind.annotation.PathVariable;
 

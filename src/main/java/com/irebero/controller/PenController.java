@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.irebero.Domain.PenTable;
-import com.irebero.Domain.PigFarmingUsers;
 import com.irebero.Service.OwnerService;
 import com.irebero.Service.PenService;
 

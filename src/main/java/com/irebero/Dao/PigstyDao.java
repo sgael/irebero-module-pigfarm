@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.irebero.Domain.PenTable;
+
 import com.irebero.Domain.PigFarmingUsers;
 import com.irebero.Domain.Pigsty;
 

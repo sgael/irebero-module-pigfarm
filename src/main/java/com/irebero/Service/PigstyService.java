@@ -2,11 +2,10 @@ package com.irebero.Service;
 
 import java.util.List;
 
-import com.irebero.Domain.District;
+
 import com.irebero.Domain.PenTable;
 import com.irebero.Domain.PigFarmingUsers;
 import com.irebero.Domain.Pigsty;
-import com.irebero.Domain.Province;
 import com.irebero.Domain.Sector;
 
 public interface PigstyService {
@@ -23,4 +22,5 @@ public interface PigstyService {
  Pigsty findByid(Long id);
 List<PigFarmingUsers>findowner();
 List<PenTable>findpen();
+
 }

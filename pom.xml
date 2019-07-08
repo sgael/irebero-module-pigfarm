@@ -11,7 +11,7 @@
     <groupId>com.irebero</groupId>
     <artifactId>irebero-module-pigfarm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>irebero-module-pigfarm</name>
     <description>Pig farm module for irebero project</description>
 
@@ -125,7 +125,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
                 <configuration>
                     <mainClass>com.irebero.IreberoPigfarmModuleApplication</mainClass>
                     <arguments>

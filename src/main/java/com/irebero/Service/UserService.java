@@ -1,5 +1,6 @@
 package com.irebero.Service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.security.core.Authentication;
@@ -21,4 +22,5 @@ public interface UserService {
 	User findOne(Long id); 
 	void SendNotification(User user);
 	User findBycode(String id);
+	List<User>listusers();
 }

@@ -2,7 +2,7 @@ package com.irebero.Dao;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.irebero.Domain.PigFarmingUsers;
